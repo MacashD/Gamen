@@ -6,9 +6,8 @@ Y = ["yes","y","fuck yes"]
 N = ["no","n","fuck off","3"]
 running = True
 ENT = 0
-stW = 0
+Decision = 0
 cont = False
-gained_baub_items = False
 n = ["nothing"]
 #gamestuff
 RI = random.randint(1,100)
@@ -50,19 +49,33 @@ def Fdecision(question,options,Foutput):
 					result = Foutput[i]
 					DecisionMade = True
 	return result
+def item_to_backpack(item,backpack):
+	done = False
+	for x in range(0,len(backpack)):
+		if backpack[x] == n and done == False:
+				backpack[x] = item
+				done = True
+# do something when backpack full
 def cls():
 	print("\n"*100)
+def EntCls():
+	input()
+	cls()
 #st
 print("this is a txt based adventure game thing\nversion 0.0.2\nOOF, enter to continue")
 D = input()
 if D == "DEBUG":
+	cls()
 	print("debug mode activated")
 	Debug = True
 	FH = True
+	input()
 elif D == "1517":
+	cls()
 	print("hallifordian?")
 	FH = True
 	Debug = False
+	input()
 else:
 	Debug = False
 	FH = False
@@ -83,16 +96,16 @@ if GM == "R":
 	options = [op1,op2,op3,op4]
 	Foutput = ["oakstick","flintstones","smallpebbles","nothing"]
 	Q = "pick a starting weapon\n1 for an oak stick\n2 for 3 flint stones\n3 for 16 small pebbles\n4 for no starting weapon ONLY FOR THE MOST ARDCORE OF MADLADS"
-	stW = Fdecision(Q,options,Foutput)
-	if stW == "oakstick":
-		backpack[0] = oakstick
-	elif stW == "flintstones":
+	Decision = Fdecision(Q,options,Foutput)
+	if Decision == "oakstick":
+		item_to_backpack(oakstick,backpack)
+	elif Decision == "flintstones":
 		flintstone[2] = 3
-		backpack[0] = flintstone
-	elif stW == "smallpebbles":
+		item_to_backpack(flintstone,backpack)
+	elif Decision == "smallpebbles":
 		small_pebbles[2] = 16
-		backpack[0] = small_pebbles
-	elif stW == "nothing":
+		item_to_backpack(small_pebbles,backpack)
+	elif Decision == "nothing":
 		print("goodluck")
 	cls()
 	while running == True:
@@ -100,7 +113,7 @@ if GM == "R":
 			cls()
 			if CP == 1:
 				#checkpoint
-				RI = random.randint(1,25)
+				RI = random.randint(25,25)
 				if RI == 25:
 					print("event1: the big gae approaches")
 					time.sleep(5)
@@ -110,21 +123,19 @@ if GM == "R":
 						print(".")
 						time.sleep(1)
 					print("here have an upgrade to your stick or something")
-					hasoakstick = "?"
 					for x in range(0,len(backpack)):
 						if backpack[x] == oakstick:
-							hasoakstick = True
-							search = 0
-					if hasoakstick == True:
-						oakstick = ["oak stick",1.25,35]
-						backpack[0] = oakstick
-						print("your oak stick gained 0.25 damage and 10 durability",oakstick)
-					else:
+							oakstick = ["oak stick",1.25,35]
+							backpack[x] = n
+							item_to_backpack(oakstick,backpack)
+							print("your oak stick gained 0.25 damage and 10 durability",oakstick)
+							EntCls()
+					if backpack[0] != oakstick:
 						print("oh you dont have a stick, sorry thought you did")
 						time.sleep(7)
 						print("well bye")
 						time.sleep(0.5)
-						cls()
+						EntCls()
 				CP_1_VillageReward_s = random.randint(250,750)
 				#personal messages
 				if FH == True:
@@ -141,26 +152,24 @@ if GM == "R":
 					RI = random.randint(1,1000)
 					if RI == 1000:
 						print("adam is lgbt")
-					input()
-					cls()
+					EntCls()
 				#personal messages
 				dragon_quest_info = ["_st_ \ndragon or some shit fucked everything \nreward:",CP_1_VillageReward_s,"Gold \nplz help or someshit \n(it seems like in this village they speak english normaly apart from replacing something with someshit)"]
 				print(dragon_quest_info[0],dragon_quest_info[1],dragon_quest_info[2])
 				options = [Y,N]
 				Foutput = ["yes","no"]
 				Q="y / n"
-				DDquest = Fdecision(Q,options,Foutput)
-				if DDquest == "yes":
+				Decision = Fdecision(Q,options,Foutput)
+				if Decision == "yes":
 					cls()
 					print("(you accepted the quest)")
 					print("dshit")
-					input()
-					cls()
+					EntCls()
 					#remember this optional bit needs to flow with the rest of the game
 				else:
 					cls()
 					print("(you declined the quest)")
-					input()
+					EntCls()
 				print("you continue on, walking down the path")
 				time.sleep(1)
 				print("the sun slowly decending beneath the horison")
@@ -176,13 +185,13 @@ if GM == "R":
 				TreeByRoad = ["tree","t","the fucking tree","2"]
 				options = [ground,TreeByRoad,N]
 				Foutput = ["ground","tree","no"]
-				FirstSleepRP = Fdecision(Q,options,Foutput)
+				Decision = Fdecision(Q,options,Foutput)
 				cls()
-				if FirstSleepRP == "ground":
+				if Decision == "ground":
 					print("ground = true")
-				elif FirstSleepRP == "tree":
+				elif Decision == "tree":
 					print("they are sleeping in the tree")
-				elif FirstSleepRP == "no":
+				elif Decision == "no":
 					print("they no slep")
 				input()
 				CP = 2
@@ -217,6 +226,11 @@ if GM == "R":
 						print(baub_items[i][x])
 				print("")
 			input()
+		if Debug == True and ENT == "/as":
+			backpack = backpack + [n]
+		if Debug == True and ENT =="/var":
+			print(globals())
+			EntCls()
 elif GM == "WEEB":
 	print("add weeb version here")
 	print("add owo stuff l = w and r = w")
