@@ -19,6 +19,7 @@ Phealth = 20
 #mainhand
 mainhand = n
 #items
+Gold_Coin = ["Gold coin",0,"can be used as a currency in some societys"]
 # [name,damage,durability,]
 oakstick = ["oak stick",1,25]
 flintstone = ["flint stone",10,0]
@@ -52,10 +53,11 @@ def Fdecision(question,options,Foutput):
 def item_to_backpack(item,backpack):
 	done = False
 	for x in range(0,len(backpack)):
-		if backpack[x] == n and done == False:
-				backpack[x] = item
-				done = True
-# do something when backpack full
+		if item[0] == Gold_Coin[0] and backpack[x][0] == Gold_Coin[0]:
+			done = True
+		elif backpack[x] == n and done == False:
+			backpack[x] = item
+			done = True
 def cls():
 	print("\n"*100)
 def EntCls():
@@ -113,7 +115,7 @@ if GM == "R":
 			cls()
 			if CP == 1:
 				#checkpoint
-				RI = random.randint(25,25)
+				RI = random.randint(1,25)
 				if RI == 25:
 					print("event1: the big gae approaches")
 					time.sleep(5)
@@ -192,6 +194,7 @@ if GM == "R":
 				elif Decision == "tree":
 					print("they are sleeping in the tree")
 				elif Decision == "no":
+					print("SLEEP IS FOR THE WEAK")
 					print("they no slep")
 				input()
 				CP = 2
@@ -214,7 +217,10 @@ if GM == "R":
 			print("\n")
 			print("backpack:\n")
 			for x in range(0,len(backpack)):
-				print(backpack[x][0])
+				if backpack[x][0] == "Gold coin":
+					print(backpack[x][1],backpack[x][0])
+				else:
+					print(backpack[x][0])
 				if Debug == False and backpack[x] != n and backpack[x] != backpack[0]:
 					time.sleep(random.randint(1,2))
 			input()
@@ -231,6 +237,9 @@ if GM == "R":
 		if Debug == True and ENT =="/var":
 			print(globals())
 			EntCls()
+		if Debug == True and ENT == "/add gold":
+			Gold_Coin[1] = Gold_Coin[1] + int(input("amount?"))
+			item_to_backpack(Gold_Coin,backpack)
 elif GM == "WEEB":
 	print("add weeb version here")
 	print("add owo stuff l = w and r = w")
