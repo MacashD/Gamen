@@ -120,9 +120,7 @@ else:
 cls()
 Foutput = ["R","WEEB","XTREEM MEME"]
 Q = "what gamemode do you wanna play\n \nregular or\nweeb mode or\nmemay mode"
-R = ["regular","r"]
-W = ["weeb","weebmode","w"]
-M = ["meme","mememode","m"]
+R,W,M = ["regular","r"],["weeb","weebmode","w"],["meme","mememode","m"]
 options = [R,W,M]
 GM = Fdecision(Q,options,Foutput)
 cls()
@@ -221,8 +219,7 @@ if GM == "R":
 				print("so i would suggest to find a place to settle down")
 				time.sleep(1)
 				Q = "options:\n1 for: the ground\n2 for: a bare tree\n3 for: dont"
-				ground = ["ground","g","1"]
-				TreeByRoad = ["tree","t","the fucking tree","2"]
+				ground,TreeByRoad = ["ground","g","1"],["tree","t","the fucking tree","2"]
 				options = [ground,TreeByRoad,N]
 				Foutput = ["ground","tree","no"]
 				Decision = Fdecision(Q,options,Foutput)
