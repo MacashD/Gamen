@@ -1,17 +1,9 @@
 #changelog:
 import time
 import random 
-CP = 1
-Y = ["yes","y","fuck yes"]
-N = ["no","n","fuck off","3"]
-op1 = ["1","one"]
-op2 = ["2","two"]
-op3 = ["3","three"]
-op4 = ["4","four"]
-running = True
-ENT = 0
-Decision = 0
-cont = False
+Y,N = ["yes","y","fuck yes"],["no","n","fuck off","3"]
+op1,op2,op3,op4 = ["1","one"],["2","two"],["3","three"],["4","four"]
+running,cont,ENT,Decision,CP = True,False,0,0,1
 n = ["nothing"]
 #gamestuff
 RI = random.randint(1,100)
@@ -149,6 +141,7 @@ if GM == "R":
 		item_to_backpack(small_pebbles,backpack)
 	elif Decision == "nothing":
 		print("goodluck")
+		EntCls()
 	cls()
 	while running == True:
 		if cont == True:
