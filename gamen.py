@@ -4,6 +4,10 @@ import random
 CP = 1
 Y = ["yes","y","fuck yes"]
 N = ["no","n","fuck off","3"]
+op1 = ["1","one"]
+op2 = ["2","two"]
+op3 = ["3","three"]
+op4 = ["4","four"]
 running = True
 ENT = 0
 Decision = 0
@@ -24,13 +28,20 @@ Gold_Coin = ["Gold coin",0,"can be used as a currency in some societys"]
 oakstick = ["oak stick",1,25]
 flintstone = ["flint stone",10,0]
 small_pebbles = ["small pebbles",2,0]
-Delta_Rune = ["Delta Rune","revive once in battle",0,1,"seems to be eminating a powerful aura... you are filled with determination"]
+Delta_Rune = ["Delta Rune","revive once in battle",0,1,"'seems to be eminating a powerful aura... you are filled with determination'","powerstone"]
+TurtleShell = ["turtle shell","lightweight\nhard",15,15,"'an empty turtle shell... seems like it fits you'","chestplate"]
 #delta rune is a power_stone
-# baubs: name,effect,damage,durability,lore            watch item is for pimp/rapper joke
-ring = ["nothing","",0,0,""]
-chain = ["nothing","",0,0,""]
-watch = ["nothing","",0,0,""]
-power_stone = ["nothing","",0,0,""]
+# baubs: name,effect,durability,damage,lore            watch item is for pimp/rapper joke
+ring = ["nothing","",0,0,"","ring"]
+chain = ["nothing","",0,0,"","chain"]
+watch = ["nothing","",0,0,"","watch"]
+power_stone = ["nothing","",0,0,"","powerstone"]
+# armour: name,effect,durability,defense,lore
+helm = ["nothing","",0,0,"","helmet"]
+chestplate = ["nothing","",0,0,"","chestplate"]
+leggings = ["nothing","",0,0,"","leggings"]
+boots = ["nothing","",0,0,"","boots"]
+ArmourSlots = [helm,chestplate,leggings,boots]
 backpack = [n,n,n,n,n,n,n,n,n,n]
 baub_items = [ring,chain,watch,power_stone]
 #backpack slots
@@ -58,21 +69,54 @@ def item_to_backpack(item,backpack):
 		elif backpack[x] == n and done == False:
 			backpack[x] = item
 			done = True
+def display(var):
+	print("")
+	for i in range(0,len(var)):
+		for x in range(0,len(var[i])):
+			if x == 0 or x == 1 or x == 4:
+				print(var[i][x])
+		print("")
+def displayBP():
+	print("\n")
+	print("backpack:\n")
+	for x in range(0,len(backpack)):
+		if Debug == False and backpack[x] != n and backpack[x] != backpack[0]:
+			time.sleep(random.randint(1,2))
+		if backpack[x][0] == "Gold coin":
+			print(backpack[x][1],backpack[x][0])
+		else:
+			print(backpack[x][0])
+	input()
+def equip():
+	done = False
+	SLT = ["helmet","chestplate","leggings","boots","ring","chain","watch","powerstone"]
+	for x in range(0,len(backpack)):
+		if len(backpack[x]) == 6:
+			for i in range(0,len(SLT)):
+				if done == False and backpack[x][5] == SLT[i]:
+					if i <= 4:
+						ArmourSlots[i] = backpack[x]			
+					elif i > 4:
+						i=i-4
+						baub_items[i] = backpack[x]
+					backpack[x] = n
+					done = True
 def cls():
 	print("\n"*100)
 def EntCls():
 	input()
 	cls()
+#functions
 #st
 print("this is a txt based adventure game thing\nversion 0.0.2\nOOF, enter to continue")
-D = input()
-if D == "DEBUG":
+Decision = input()
+if Decision == "DEBUG":
 	cls()
 	print("debug mode activated")
 	Debug = True
 	FH = True
 	input()
-elif D == "1517":
+elif Decision == "1517":
 	cls()
 	print("hallifordian?")
 	FH = True
@@ -91,10 +135,6 @@ options = [R,W,M]
 GM = Fdecision(Q,options,Foutput)
 cls()
 if GM == "R":
-	op1 = ["1","one"]
-	op2 = ["2","two"]
-	op3 = ["3","three"]
-	op4 = ["4","four"]
 	options = [op1,op2,op3,op4]
 	Foutput = ["oakstick","flintstones","smallpebbles","nothing"]
 	Q = "pick a starting weapon\n1 for an oak stick\n2 for 3 flint stones\n3 for 16 small pebbles\n4 for no starting weapon ONLY FOR THE MOST ARDCORE OF MADLADS"
@@ -115,7 +155,10 @@ if GM == "R":
 			cls()
 			if CP == 1:
 				#checkpoint
-				RI = random.randint(1,25)
+				if Debug == True:
+					RI = 25
+				else:
+					RI = random.randint(1,25)
 				if RI == 25:
 					print("event1: the big gae approaches")
 					time.sleep(5)
@@ -167,6 +210,8 @@ if GM == "R":
 					print("(you accepted the quest)")
 					print("dshit")
 					EntCls()
+					Gold_Coin[1] = Gold_Coin[1] + CP_1_VillageReward_s
+					item_to_backpack(Gold_Coin,backpack)
 					#remember this optional bit needs to flow with the rest of the game
 				else:
 					cls()
@@ -194,44 +239,45 @@ if GM == "R":
 				elif Decision == "tree":
 					print("they are sleeping in the tree")
 				elif Decision == "no":
-					print("SLEEP IS FOR THE WEAK")
-					print("they no slep")
-				input()
+					print("(you decided not to sleep,\n seconds later you hear a distant voice saying,\n sleep is for the weak)")
+					time.sleep(2)
+					for x in range(0,3):
+						print(".")
+						time.sleep(1)
+					print("(it sounds like it came from very far away so you decide to ignore it)")
+					EntCls()
+					#continue
 				CP = 2
 			elif CP == 2:
 				#checkpoint2
 				cls()
 				RI = random.randint(1,3)
 				if RI == 3:
-					print("event1: big b0ss battle")
+					print("event1: big b0ss battle\n\nGaint fucking turtle!")
+					print("add combat shit here")
+					print("you got a turtle shell")
+					item_to_backpack(TurtleShell,backpack)
 					#remember to cls()
 				print("gamen2")
 				input()
 			cont = False
 		cls()
 		print("you are at CP:",CP)
-		ENT = input("enter backpack/bp to check your backpack or c/continue to continue\nor enter baubs to see your baub items").lower()
+		ENT = input("enter bp to check your backpack or c to continue\nbaubs for baub items\nar for armour").lower()
 		if ENT == "continue" or ENT == "c":
 			cont = True
 		if ENT == "backpack" or ENT == "bp":
-			print("\n")
-			print("backpack:\n")
-			for x in range(0,len(backpack)):
-				if backpack[x][0] == "Gold coin":
-					print(backpack[x][1],backpack[x][0])
-				else:
-					print(backpack[x][0])
-				if Debug == False and backpack[x] != n and backpack[x] != backpack[0]:
-					time.sleep(random.randint(1,2))
-			input()
-		if ENT == "baubs":
-			print("")
-			for i in range(0,len(baub_items)):
-				for x in range(0,len(baub_items[i])):
-					if x == 0 or x == 1 or x == 4:
-						print(baub_items[i][x])
-				print("")
-			input()
+			displayBP()
+		if ENT == "baubs" or ENT == "ba":
+			display(baub_items)
+			print("(to equip baub items enter equip)")
+			EntCls()
+		if ENT == "armour" or ENT == "ar":
+			display(ArmourSlots)
+			print("(to equip armour enter equip)")
+			EntCls()
+		if ENT == "equip":
+			equip()
 		if Debug == True and ENT == "/as":
 			backpack = backpack + [n]
 		if Debug == True and ENT =="/var":
