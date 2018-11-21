@@ -59,6 +59,18 @@ def equip():
 						V.baub_items[i] = V.backpack[x]
 					V.backpack[x] = V.n
 					done = True
+def  night():
+	Decision = random.randint(1,3)
+	if Decision == 3:
+		Decision = random.randint(1,25)
+		if Decision == 25:
+			Decision = random.randint(1,125)
+			if Decision == 125:
+				V.moon[0],V.moon[1] = V.mooncolour[2],V.mooneffect[2]
+		else:
+			V.moon[0],V.moon[1] = V.mooncolour[1],V.mooneffect[1]
+	else:
+		V.moon[0],V.moon[1] = V.mooncolour[0],V.mooneffect[0]
 def cls():
 	print("\n"*100)
 def EntCls():
