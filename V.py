@@ -1,8 +1,11 @@
 import random
 Y,N,Debug,FH = ["yes","y","fuck yes"],["no","n","fuck off","3"],False,False
 op1,op2,op3,op4 = ["1","one"],["2","two"],["3","three"],["4","four"]
-running,cont,ENT,Decision,CP = True,False,0,0,1
+running,cont,ENT,Decision,CP = True,False,0,0,0
 n = ["nothing"]
+mooncolour = ["blue","white","RED"]
+mooneffect = ["(the elements that consist of ice and water seem powerfull tonight)","(just a normal night)","(EVIL THRIVES TONIGHT)"]
+moon = ["mooncolour","mooneffect"]
 #gamestuff
 RI = random.randint(1,100)
 if RI == 100:
@@ -10,6 +13,7 @@ if RI == 100:
 else:
 	the_big_variable = "*and that other shit you mortals need to stay alive...*"
 Phealth = 20
+Defence = 0
 #mainhand
 mainhand = n
 #items
@@ -34,8 +38,7 @@ boots = ["nothing","",0,0,"","boots"]
 ArmourSlots = [helm,chestplate,leggings,boots]
 backpack = [n,n,n,n,n,n,n,n,n,n]
 baub_items = [ring,chain,watch,power_stone]
-#backpack slots
 #player stats
-#pstattest = open("Player stats","W")
+#pstattest = open("Player stats",'x')
 #print(pstattest)
-Player_Stats = [Phealth,backpack,baub_items,mainhand]
+Player_Stats = [Phealth,Defence,backpack,baub_items,mainhand]

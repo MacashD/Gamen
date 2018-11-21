@@ -1,12 +1,9 @@
-import time
-import random
-import V
-import F
-def CPTWO():
+import time,random,V,F
+def CP2():
 	#checkpoint2
 	F.cls()
 	RI = random.randint(1,3)
-	if RI == 3:
+	if RI == 3 or V.Debug == True:
 		print("event1: big b0ss battle\n\nGaint fucking turtle!")
 		print("add combat shit here")
 		print("you got a turtle shell")

@@ -1,6 +1,4 @@
-import V
-import time
-import random
+import V,time,random
 def Fdecision(question,options,Foutput):
 	DecisionMade = False
 	while DecisionMade == False:
@@ -21,15 +19,19 @@ def item_to_backpack(item,backpack):
 			V.backpack[x] = item
 			done = True
 def display(var):
-	print("")
+	if var == V.ArmourSlots:
+		varD = "Armour:"
+	if var == V.baub_items:
+		varD = "baubs:"
+	cls()
+	print(varD,"\n")
 	for i in range(0,len(var)):
 		for x in range(0,len(var[i])):
 			if x == 0 or x == 1 or x == 4:
 				print(var[i][x])
 		print("")
 def displayBP():
-	print("\n")
-	print("backpack:\n")
+	print("\nbackpack:\n")
 	for x in range(0,len(V.backpack)):
 		if V.Debug == False and V.backpack[x] != V.n and V.backpack[x] != V.backpack[0]:
 			time.sleep(random.randint(1,2))
@@ -37,7 +39,12 @@ def displayBP():
 			print(V.backpack[x][1],V.backpack[x][0])
 		else:
 			print(V.backpack[x][0])
-	input()
+def displayPS():
+	cls()
+	print("\nplayer stats:\n")
+	print(V.Player_Stats[0],"health")
+	print(V.Player_Stats[1],"defence")
+	print(len(V.backpack),"backpack slots")
 def equip():
 	done = False
 	SLT = ["helmet","chestplate","leggings","boots","ring","chain","watch","powerstone"]
@@ -48,12 +55,16 @@ def equip():
 					if i <= 4:
 						V.ArmourSlots[i] = V.backpack[x]
 					elif i > 4:
-						i=i-4
+						i-=4
 						V.baub_items[i] = V.backpack[x]
 					V.backpack[x] = V.n
 					done = True
 def cls():
 	print("\n"*100)
 def EntCls():
-	input("Enter to Continue")
+	input()
 	cls()
+def Dots(seconds):
+	for x in range(0,seconds):
+		print(".")
+		time.sleep(1)
