@@ -74,13 +74,15 @@ if GM == "R":
 					F.equip()
 			if BP_MENU == "equip":
 				F.equip()
+		if ENT == "equip":
+			F.equip()
 		if V.Debug == True and ENT == "/as":
-			V.backpack = V.backpack + [V.n]
+			V.backpack += [V.n]
 		if V.Debug == True and ENT =="/var":
 			print(globals())
 			F.EntCls()
 		if V.Debug == True and ENT == "/add gold":
-			V.Gold_Coin[1] = V.Gold_Coin[1] + int(input("amount?"))
+			V.Gold_Coin[1] += int(input("amount?"))
 			F.item_to_backpack(V.Gold_Coin,V.backpack)
 		if V.Debug == True and ENT == "save game":
 			print("NO")

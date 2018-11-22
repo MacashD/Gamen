@@ -46,7 +46,6 @@ def displayPS():
 	print(V.Player_Stats[1],"defence")
 	print(len(V.backpack),"backpack slots")
 def equip():
-	done = False
 	SLT = ["helmet","chestplate","leggings","boots","ring","chain","watch","powerstone"]
 	for x in range(0,len(V.backpack)):
 		if len(V.backpack[x]) == 6:

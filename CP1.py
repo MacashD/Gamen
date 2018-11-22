@@ -1,7 +1,6 @@
 import time,random,V,F
 def CP1():
 	F.night()
-	RI = random.randint(1,25)
 	if RI == 25 or V.Debug == True:
 		print("event1: the big gae approaches")
 		time.sleep(5)
@@ -51,7 +50,7 @@ def CP1():
 		print("(you accepted the quest)")
 		print("dshit")
 		F.EntCls()
-		V.Gold_Coin[1] = V.Gold_Coin[1] + CP_1_VillageReward_s
+		V.Gold_Coin[1] += CP_1_VillageReward_s
 		F.item_to_backpack(V.Gold_Coin,V.backpack)
 		#remember this optional bit needs to flow with the rest of the game
 	else:
@@ -70,8 +69,7 @@ def CP1():
 	#time.sleep(1)
 	Q = "options:\n1 for: the ground\n2 for: a bare tree\n3 for: dont"
 	ground,TreeByRoad = ["ground","g","1"],["tree","t","the fucking tree","2"]
-	options = [ground,TreeByRoad,V.N]
-	Foutput = ["ground","tree","no"]
+	options,Foutput = [ground,TreeByRoad,V.N],["ground","tree","no"]
 	Decision = F.Fdecision(Q,options,Foutput)
 	F.cls()
 	if Decision == "ground":
@@ -93,3 +91,29 @@ def CP1():
 		F.EntCls()
 		print("you continue on in the dark\nthe moon looks",V.moon[0],V.moon[1])
 		F.EntCls()
+		RI = random.randint(1,4)
+		if V.moon[0] == "RED" or RI != 4:
+			print("a red and black striped gremlin came out and attacked!")
+			time.sleep(1)
+			print("attack sequence")
+			F.EntCls()
+		else:
+			print("unexpectedly you were undisterbed through the knight")
+			time.sleep(2)
+			print("how lucky")
+			F.EntCls()
+	print("you press on and find a castle\nits walls are made from stone bricks and the wooden gate infront of you seems impossible to break with what you have")
+	F.EntCls()
+	Q="what do you wanna do?"
+	V.op1,V.op2,V.op3,V.op4 = ["knock","k"],["nothing","n","i dont fucking know","idk"],["something","s"],["piss on the door"]
+	options = [V.op1,V.op2,V.op3,V.op4]
+	Foutput = ["knock","n","s","piss"]
+	Decision = F.Fdecision(Q,options,Foutput)
+	if Decision == "knock":
+		print("a guard answers your knock by opening the door")
+	if Decision == "n" or "s":
+		print("a guard opens the door")
+		time.sleep(2)
+		print("seems like they have an open door policy")
+	if Decision == "piss":
+		print("wtf is wrong with you")

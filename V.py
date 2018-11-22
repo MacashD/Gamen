@@ -22,8 +22,9 @@ Gold_Coin = ["Gold coin",0,"can be used as a currency in some societys"]
 oakstick = ["oak stick",1,25]
 flintstone = ["flint stone",10,0]
 small_pebbles = ["small pebbles",2,0]
-Delta_Rune = ["Delta Rune","revive once in battle",0,1,"'seems to be eminating a powerful aura... you are filled with determination'","powerstone"]
-TurtleShell = ["turtle shell","lightweight\nhard",15,15,"'an empty turtle shell... seems like it fits you'","chestplate"]
+TurtleShell = ["turtle shell","lightweight: III\nhard: III",15,15,"an empty turtle shell... seems like it fits you","chestplate"]
+Delta_Rune = ["Delta Rune","revive once in battle",0,1,"seems to be eminating a powerful aura... you are filled with determination","powerstone"]
+iron_boots = ["iron boots","heavy: I\nmalluable: II\nstrong: III",25,20,"just some iron boots","boots"]
 #delta rune is a power_stone
 # baubs: name,effect,durability,damage,lore            watch item is for pimp/rapper joke
 ring = ["nothing","",0,0,"","ring"]
