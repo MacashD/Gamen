@@ -1,4 +1,4 @@
-import time,random,V,F
+import time,random,menu,V,F
 def CP2():
 	#checkpoint2
 	F.cls()

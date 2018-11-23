@@ -1,5 +1,5 @@
 import random
-Y,N,Debug,FH = ["yes","y","fuck yes"],["no","n","fuck off","3"],False,False
+Y,N,Debug = ["yes","y","fuck yes"],["no","n","fuck off","3"],False
 op1,op2,op3,op4 = ["1","one"],["2","two"],["3","three"],["4","four"]
 running,cont,ENT,Decision,CP = True,False,0,0,0
 n = ["nothing"]

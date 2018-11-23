@@ -73,7 +73,7 @@ def  night():
 def cls():
 	print("\n"*100)
 def EntCls():
-	input()
+	input("Enter to Continue")
 	cls()
 def Dots(seconds):
 	for x in range(0,seconds):

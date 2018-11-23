@@ -1,6 +1,7 @@
-import time,random,V,F
+import time,random,menu,V,F
 def CP1():
 	F.night()
+	RI = random.randint(1,25)
 	if RI == 25 or V.Debug == True:
 		print("event1: the big gae approaches")
 		time.sleep(5)
@@ -22,23 +23,6 @@ def CP1():
 			time.sleep(0.5)
 			F.EntCls()
 	CP_1_VillageReward_s = random.randint(250,750)
-	#personal messages
-	if V.FH == True:
-		print("here are what some people have decided to say to you")
-		RI = random.randint(1,200)
-		if RI == 200:
-			print("This is a crap game")
-		RI = random.randint(1,10)
-		if RI == 10:
-			print("r,u,nor,mal")
-		RI = random.randint(1,1000000000)
-		if RI == 1000000000:
-			print("seyon: fuck you")
-		RI = random.randint(1,1000)
-		if RI == 1000:
-			print("adam is lgbt")
-		F.EntCls()
-	#personal messages
 	dragon_quest_info = ["_st_ \ndragon or some shit fucked everything \nreward:",CP_1_VillageReward_s,"Gold \nplz help or someshit \n(it seems like in this village they speak english normaly apart from replacing something with someshit)"]
 	print(dragon_quest_info[0],dragon_quest_info[1],dragon_quest_info[2])
 	options = [V.Y,V.N]
@@ -67,6 +51,7 @@ def CP1():
 	#time.sleep(1)
 	print("so i would suggest to find a place to settle down")
 	#time.sleep(1)
+	why = ""
 	Q = "options:\n1 for: the ground\n2 for: a bare tree\n3 for: dont"
 	ground,TreeByRoad = ["ground","g","1"],["tree","t","the fucking tree","2"]
 	options,Foutput = [ground,TreeByRoad,V.N],["ground","tree","no"]
@@ -74,8 +59,10 @@ def CP1():
 	F.cls()
 	if Decision == "ground":
 		print("(you decided to sleep on the ground\nthe ground became warmer)")
+		time.sleep(2)
 		F.Dots(5)
 		print("(you took a shit...)\n")
+		whyyy = "s"
 		time.sleep(3)
 		print("(you disgusting human)")
 		F.EntCls()
@@ -105,15 +92,42 @@ def CP1():
 	print("you press on and find a castle\nits walls are made from stone bricks and the wooden gate infront of you seems impossible to break with what you have")
 	F.EntCls()
 	Q="what do you wanna do?"
-	V.op1,V.op2,V.op3,V.op4 = ["knock","k"],["nothing","n","i dont fucking know","idk"],["something","s"],["piss on the door"]
+	V.op1,V.op2,V.op3,V.op4 = ["knock","k"],["nothing","n","i dont fucking know","idk"],["something","s"],["piss on the door","piss"]
 	options = [V.op1,V.op2,V.op3,V.op4]
 	Foutput = ["knock","n","s","piss"]
 	Decision = F.Fdecision(Q,options,Foutput)
-	if Decision == "knock":
-		print("a guard answers your knock by opening the door")
-	if Decision == "n" or "s":
-		print("a guard opens the door")
-		time.sleep(2)
-		print("seems like they have an open door policy")
 	if Decision == "piss":
-		print("wtf is wrong with you")
+		print("you piss on th\n")
+		time.sleep(1)
+		print("wait what\n")
+		time.sleep(4)
+		print("wtf is wrong with you\n")
+		if whyyy == "s":
+			time.sleep(3)
+			print("first the shit and now you...\n")
+			time.sleep(7)
+			print("there is a toilet anywhere but on the fucking road or the door\n")
+			time.sleep(7)
+			print("why tho\n")
+			time.sleep(3)
+			print("ffs\n")
+			F.EntCls()
+		else:
+			time.sleep(1)
+			print("fgs this is not like you\n")
+			time.sleep(2)
+			print("well lets just move on\n")
+			F.EntCls()
+	if Decision == "knock":
+		print("a guard answers your knock by opening the door\n")
+	if Decision == "n" or Decision == "s":
+		print("a guard opens the door\n")
+		time.sleep(2)
+		print("seems like they have an open door policy\n")
+	time.sleep(2)
+	print("guard: why are you here")
+	if Decision == "piss":
+		print("\nguard: oh you little bitch\nguard: ill have you killed for defileing the kingdom of my bosses bosses boss")
+		time.sleep(3)
+		print("guard: im pretty high up the ranks i swear")
+	F.EntCls()
