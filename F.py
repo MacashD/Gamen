@@ -48,6 +48,7 @@ def displayPS():
 def equip():
 	SLT = ["helmet","chestplate","leggings","boots","ring","chain","watch","powerstone"]
 	for x in range(0,len(V.backpack)):
+		done = False
 		if len(V.backpack[x]) == 6:
 			for i in range(0,len(SLT)):
 				if done == False and V.backpack[x][5] == SLT[i]:
@@ -58,7 +59,7 @@ def equip():
 						V.baub_items[i] = V.backpack[x]
 					V.backpack[x] = V.n
 					done = True
-def  night():
+def night():
 	Decision = random.randint(1,3)
 	if Decision == 3:
 		Decision = random.randint(1,25)

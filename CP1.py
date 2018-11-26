@@ -1,5 +1,22 @@
 import time,random,menu,V,F
 def CP1():
+	options = [V.op1,V.op2,V.op3,V.op4]
+	Foutput = ["oakstick","flintstones","smallpebbles","nothing"]
+	Q = "pick a starting weapon\n1 for an oak stick\n2 for 3 flint stones\n3 for 16 small pebbles\n4 for no starting weapon ONLY FOR THE MOST ARDCORE OF MADLADS"
+	Decision = F.Fdecision(Q,options,Foutput)
+	if Decision == "oakstick":
+		F.item_to_backpack(V.oakstick,V.backpack)
+	elif Decision == "flintstones":
+		V.flintstone[2] = 3
+		F.item_to_backpack(V.flintstone,V.backpack)
+	elif Decision == "smallpebbles":
+		V.small_pebbles[2] = 16
+		F.item_to_backpack(V.small_pebbles,V.backpack)
+	elif Decision == "nothing":
+		print("goodluck")
+		input()
+	F.cls()
+#	menu.bpmenu(False) this adds menu
 	F.night()
 	RI = random.randint(1,25)
 	if RI == 25 or V.Debug == True:
