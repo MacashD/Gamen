@@ -68,7 +68,7 @@ def CP1():
 	#time.sleep(1)
 	print("so i would suggest to find a place to settle down")
 	#time.sleep(1)
-	why = ""
+	whyyy = ""
 	Q = "options:\n1 for: the ground\n2 for: a bare tree\n3 for: dont"
 	ground,TreeByRoad = ["ground","g","1"],["tree","t","the fucking tree","2"]
 	options,Foutput = [ground,TreeByRoad,V.N],["ground","tree","no"]
