@@ -13,32 +13,40 @@ def Fdecision(question,options,Foutput):
 def item_to_backpack(item,backpack):
 	done = False
 	for x in range(0,len(backpack)):
-		if item[0] == V.Gold_Coin[0] and V.backpack[x][0] == V.Gold_Coin[0]:
+		if item["name"] == V.Gold_Coin["name"] and V.backpack[x]["name"] == V.Gold_Coin["name"]:
 			done = True
 		elif V.backpack[x] == V.n and done == False:
 			V.backpack[x] = item
 			done = True
 def display(var):
+	cls()
 	if var == V.ArmourSlots:
 		varD = "Armour:"
 	if var == V.baub_items:
 		varD = "baubs:"
-	cls()
 	print(varD,"\n")
 	for i in range(0,len(var)):
 		for x in range(0,len(var[i])):
-			if x == 0 or x == 1 or x == 4:
-				print(var[i][x])
+			if x == 0:
+				print(var[i]["name"])
+			if len(var[i]) == 6:
+				if x == 1:
+					print(var[i]["effect"])
+				if x == 4:
+					print(var[i]["lore"])
 		print("")
 def displayBP():
 	print("\nbackpack:\n")
 	for x in range(0,len(V.backpack)):
 		if V.Debug == False and V.backpack[x] != V.n and V.backpack[x] != V.backpack[0]:
 			time.sleep(random.randint(1,2))
-		if V.backpack[x][0] == "Gold coin":
-			print(V.backpack[x][1],V.backpack[x][0])
+		if V.backpack[x]["name"] == "Gold coin":
+			print(V.backpack[x]["amount"],V.backpack[x]["name"])
 		else:
-			print(V.backpack[x][0])
+			if V.Debug == True:
+				print(V.backpack[x])
+			else:
+				print(V.backpack[x]["name"])
 def displayPS():
 	cls()
 	print("\nplayer stats:\n")
@@ -51,7 +59,7 @@ def equip():
 		done = False
 		if len(V.backpack[x]) == 6:
 			for i in range(0,len(SLT)):
-				if done == False and V.backpack[x][5] == SLT[i]:
+				if done == False and V.backpack[x]["tag"] == SLT[i]:
 					if i <= 4:
 						V.ArmourSlots[i] = V.backpack[x]
 					elif i > 4:

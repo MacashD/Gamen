@@ -25,15 +25,14 @@ def CP1():
 		print("nah jk wouldnt be that mean to drop a b0ss battle on the first CP")
 		time.sleep(2)
 		F.Dots(3)
-		print("here have an upgrade to your stick or something")
-		for x in range(0,len(V.backpack)):
-			if V.backpack[x] == V.oakstick:
-				V.oakstick = ["oak stick",1.25,35]
-				V.backpack[x] = V.n
-				F.item_to_backpack(V.oakstick,V.backpack)
-				print("your oak stick gained 0.25 damage and 10 durability",V.oakstick)
-				F.EntCls()
-		if V.backpack[0] != V.oakstick:
+		print("here have an upgrade to your stick or something\n")
+		if V.oakstick in V.backpack:
+			V.oakstick = {"name":"oak stick","damage":1.25,"durability":35}
+			V.backpack[0] = V.n
+			F.item_to_backpack(V.oakstick,V.backpack)
+			print("your oak stick gained 0.25 damage and 10 durability\n",V.oakstick["name"],V.oakstick["damage"],V.oakstick["durability"])
+			F.EntCls()
+		else:
 			print("oh you dont have a stick, sorry thought you did")
 			time.sleep(7)
 			print("well bye")
@@ -51,7 +50,7 @@ def CP1():
 		print("(you accepted the quest)")
 		print("dshit")
 		F.EntCls()
-		V.Gold_Coin[1] += CP_1_VillageReward_s
+		V.Gold_Coin["amount"] += CP_1_VillageReward_s
 		F.item_to_backpack(V.Gold_Coin,V.backpack)
 		#remember this optional bit needs to flow with the rest of the game
 	else:
