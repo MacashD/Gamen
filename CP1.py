@@ -1,4 +1,5 @@
 import time,random,menu,V,F
+#	menu.bpmenu(False) this adds menu
 def CP1():
 	options = [V.op1,V.op2,V.op3,V.op4]
 	Foutput = ["oakstick","flintstones","smallpebbles","nothing"]
@@ -16,10 +17,8 @@ def CP1():
 		print("goodluck")
 		input()
 	F.cls()
-#	menu.bpmenu(False) this adds menu
 	F.night()
-	RI = random.randint(1,25)
-	if RI == 25 or V.Debug == True:
+	if random.randint(1,25) == 25 or V.Debug == True:
 		print("event1: the big gae approaches")
 		time.sleep(5)
 		print("nah jk wouldnt be that mean to drop a b0ss battle on the first CP")
@@ -94,8 +93,7 @@ def CP1():
 		F.EntCls()
 		print("you continue on in the dark\nthe moon looks",V.moon[0],V.moon[1])
 		F.EntCls()
-		RI = random.randint(1,4)
-		if V.moon[0] == "RED" or RI != 4:
+		if V.moon[0] == "RED" or random.randint(1,4) != 4:
 			print("a red and black striped gremlin came out and attacked!")
 			time.sleep(1)
 			print("attack sequence")

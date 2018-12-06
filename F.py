@@ -7,17 +7,15 @@ def Fdecision(question,options,Foutput):
 		for i in range(0,len(options)):
 			for x in range(0,len(options[i])):
 				if Finput == options[i][x]:
-					result = Foutput[i]
-					DecisionMade = True
+					result,DecisionMade = Foutput[i],True
 	return result
-def item_to_backpack(item,backpack):
+def item_to_backpack(item,container):
 	done = False
-	for x in range(0,len(backpack)):
-		if item["name"] == V.Gold_Coin["name"] and V.backpack[x]["name"] == V.Gold_Coin["name"]:
+	for x in range(0,len(container)):
+		if item["name"] == V.Gold_Coin["name"] and container[x]["name"] == V.Gold_Coin["name"]:
 			done = True
-		elif V.backpack[x] == V.n and done == False:
-			V.backpack[x] = item
-			done = True
+		elif container[x] == V.n and done == False:
+			container[x],done = item,True
 def display(var):
 	cls()
 	if var == V.ArmourSlots:
@@ -60,20 +58,24 @@ def equip():
 		if len(V.backpack[x]) == 6:
 			for i in range(0,len(SLT)):
 				if done == False and V.backpack[x]["tag"] == SLT[i]:
+					def ItemReplace(slot):
+						print(V.backpack[x],slot[i])
+						if V.backpack[x]["name"] != slot[i]["name"]:
+							slot[i] = V.backpack[x]
+							V.backpack[x] = V.n
+						else:
+							print(SLT[i],"slot full")
+							EntCls()
 					if i <= 4:
-						V.ArmourSlots[i] = V.backpack[x]
-					elif i > 4:
-						i-=4
-						V.baub_items[i] = V.backpack[x]
-					V.backpack[x] = V.n
+						ItemReplace(V.ArmourSlots)
+					if i > 4:
+						i -= 4
+						ItemReplace(V.baub_items)
 					done = True
 def night():
-	Decision = random.randint(1,3)
-	if Decision == 3:
-		Decision = random.randint(1,25)
-		if Decision == 25:
-			Decision = random.randint(1,125)
-			if Decision == 125:
+	if random.randint(1,3) == 3:
+		if random.randint(1,25) == 25:
+			if random.randint(1,125) == 125:
 				V.moon[0],V.moon[1] = V.mooncolour[2],V.mooneffect[2]
 		else:
 			V.moon[0],V.moon[1] = V.mooncolour[1],V.mooneffect[1]

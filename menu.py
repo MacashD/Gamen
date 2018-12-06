@@ -11,7 +11,7 @@ def bpmenu(main):
 			done = True
 		if ENT == "backpack" or ENT == "bp":
 			F.displayBP()
-			BP_MENU = input("\nenter baubs for baub items\nar for armour\nor st/stats to see your stats")
+			BP_MENU = input("\nenter baubs for baub items\narmour for armour\nor stats to see your stats")
 			if BP_MENU == "stats" or BP_MENU == "st":
 				F.displayPS()
 				F.EntCls()

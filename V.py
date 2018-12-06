@@ -7,8 +7,7 @@ mooncolour = ["blue","white","RED"]
 mooneffect = ["(the elements that consist of ice and water seem powerfull tonight)","(just a normal night)","(EVIL THRIVES TONIGHT)"]
 moon = ["mooncolour","mooneffect"]
 #gamestuff
-RI = random.randint(1,100)
-if RI == 100:
+if random.randint(1,100) == 100:
 	the_big_variable = "something to do"
 else:
 	the_big_variable = "*and that other shit you mortals need to stay alive...*"
