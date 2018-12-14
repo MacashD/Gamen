@@ -1,18 +1,18 @@
 import time,random,menu,V,F
 #	menu.bpmenu(False) this adds menu
-def CP1():
+def CPMAIN():
 	options = [V.op1,V.op2,V.op3,V.op4]
 	Foutput = ["oakstick","flintstones","smallpebbles","nothing"]
 	Q = "pick a starting weapon\n1 for an oak stick\n2 for 3 flint stones\n3 for 16 small pebbles\n4 for no starting weapon ONLY FOR THE MOST ARDCORE OF MADLADS"
 	Decision = F.Fdecision(Q,options,Foutput)
 	if Decision == "oakstick":
-		F.item_to_backpack(V.oakstick,V.backpack)
+		F.item_to_container(V.oakstick,V.backpack)
 	elif Decision == "flintstones":
 		V.flintstone[2] = 3
-		F.item_to_backpack(V.flintstone,V.backpack)
+		F.item_to_container(V.flintstone,V.backpack)
 	elif Decision == "smallpebbles":
 		V.small_pebbles[2] = 16
-		F.item_to_backpack(V.small_pebbles,V.backpack)
+		F.item_to_container(V.small_pebbles,V.backpack)
 	elif Decision == "nothing":
 		print("goodluck")
 		input()
@@ -28,7 +28,7 @@ def CP1():
 		if V.oakstick in V.backpack:
 			V.oakstick = {"name":"oak stick","damage":1.25,"durability":35}
 			V.backpack[0] = V.n
-			F.item_to_backpack(V.oakstick,V.backpack)
+			F.item_to_container(V.oakstick,V.backpack)
 			print("your oak stick gained 0.25 damage and 10 durability\n",V.oakstick["name"],V.oakstick["damage"],V.oakstick["durability"])
 			F.EntCls()
 		else:
@@ -50,7 +50,7 @@ def CP1():
 		print("dshit")
 		F.EntCls()
 		V.Gold_Coin["amount"] += CP_1_VillageReward_s
-		F.item_to_backpack(V.Gold_Coin,V.backpack)
+		F.item_to_container(V.Gold_Coin,V.backpack)
 		#remember this optional bit needs to flow with the rest of the game
 	else:
 		F.cls()
@@ -145,3 +145,30 @@ def CP1():
 		time.sleep(3)
 		print("guard: im pretty high up the ranks i swear")
 	F.EntCls()
+	if random.randint(1,100) == 100:
+		cls()
+		F.Dots(3)
+		print("everything is a reference i think")
+		time.sleep(3)
+		print("subscribe to pewdiepie")
+	F.EntCls()
+	print("you enter the castle walls to see a vibrant village thriving around the center")
+	print("the center castle is a stone masterpiece of architecture")
+	print("\nHere is a nice drawing i made of it")
+	print("/^^^^^^\ ")
+	print("|      |\n|      |\n|      |")
+	print("[______]")
+	time.sleep(10)
+	question ="do you like it?"
+	options = [V.Y,V.N]
+	Foutput = ["yes","no"]
+	Decision = F.Fdecision(question,options,Foutput)
+	if Decision == "yes":
+		print("thank you :)")
+		print("*your health has been restored*")
+		if V.Player_Stats[0] < 20:
+			V.Player_Stats[0] = 20
+	if Decision == "no":
+		print(":(")
+	print("market or other")
+	input()

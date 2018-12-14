@@ -2,7 +2,7 @@ import time,random,V,F
 def bpmenu(main):
 	done = False
 	while done == False:
-		print("you are at CP:",V.CP+1)
+		print("you are at CP:",V.CPC+1)
 		ENT = input("enter bp to check your backpack or c to continue").lower()
 		if main == True and ENT == "continue" or ENT == "c":
 			V.cont = True
@@ -35,9 +35,9 @@ def bpmenu(main):
 			print(globals())
 			F.EntCls()
 		if V.Debug == True and ENT == "/add gold":
-			V.Gold_Coin[1] += int(input("amount?"))
-			F.item_to_backpack(V.Gold_Coin,V.backpack)
-		if V.Debug == True and ENT == "save game":
+			V.Gold_Coin["amount"] += int(input("amount?"))
+			F.item_to_container(V.Gold_Coin,V.backpack)
+		if V.Debug == True and ENT == "/save game":
 			print("NO")
 			F.EntCls()
 		F.cls()
