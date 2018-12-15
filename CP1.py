@@ -1,5 +1,4 @@
 import time,random,menu,V,F
-#	menu.bpmenu(False) this adds menu
 def CPMAIN():
 	options = [V.op1,V.op2,V.op3,V.op4]
 	Foutput = ["oakstick","flintstones","smallpebbles","nothing"]
@@ -68,8 +67,7 @@ def CPMAIN():
 	#time.sleep(1)
 	whyyy = ""
 	Q = "options:\n1 for: the ground\n2 for: a bare tree\n3 for: dont"
-	ground,TreeByRoad = ["ground","g","1"],["tree","t","the fucking tree","2"]
-	options,Foutput = [ground,TreeByRoad,V.N],["ground","tree","no"]
+	options,Foutput = [["ground","g","1"],["tree","t","the fucking tree","2"],V.N],["ground","tree","no"]
 	Decision = F.Fdecision(Q,options,Foutput)
 	F.cls()
 	if Decision == "ground":
@@ -146,12 +144,12 @@ def CPMAIN():
 		print("guard: im pretty high up the ranks i swear")
 	F.EntCls()
 	if random.randint(1,100) == 100:
-		cls()
+		F.cls()
 		F.Dots(3)
 		print("everything is a reference i think")
 		time.sleep(3)
 		print("subscribe to pewdiepie")
-	F.EntCls()
+		F.EntCls()
 	print("you enter the castle walls to see a vibrant village thriving around the center")
 	print("the center castle is a stone masterpiece of architecture")
 	print("\nHere is a nice drawing i made of it")
@@ -164,11 +162,25 @@ def CPMAIN():
 	Foutput = ["yes","no"]
 	Decision = F.Fdecision(question,options,Foutput)
 	if Decision == "yes":
+		F.cls()
 		print("thank you :)")
 		print("*your health has been restored*")
 		if V.Player_Stats[0] < 20:
 			V.Player_Stats[0] = 20
+		F.EntCls()
 	if Decision == "no":
+		F.cls()
 		print(":(")
-	print("market or other")
+		F.EntCls()
+	print("go to the market\ncontinue with the quest\nor just fuck up the town if you want")
+	question ="?:"
+	options = [["m","market","goto market","go to the market"],["c","continue","continue with the quest"],["fuck","fuck shit up","destroy everything"]]
+	Foutput = ["mark","conquest","big ol oof"]
+	Decision = F.Fdecision(question,options,Foutput)
+	if Decision == "mark":
+		print("mark")
+	if Decision == "conquest":
+		print("con")
+	if Decision == "big ol oof":
+		print("utter destruction, big ol oof")
 	input()
